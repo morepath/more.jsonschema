@@ -74,7 +74,7 @@ or extend an existent Validator. Just pass the Validator to the
     user_schema_load = loader(user_schema, validator=Draft3Validator)
 
 More information about creating or extending Validator classes
-you find in the `jsonschema documentation`_.
+you can find in the `jsonschema documentation`_.
 
 .. _jsonschema documentation:
   https://python-jsonschema.readthedocs.io/en/latest/creating

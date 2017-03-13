@@ -33,6 +33,10 @@ The JSON schema need to be load into a Python dict
       'required': ['name', 'age']
   }
 
+If you want to define JSON schemas in Python, you can use jsl_ for instance.
+
+.. _jsl: http://jsl.readthedocs.io/en/latest
+
 
 Validate
 --------

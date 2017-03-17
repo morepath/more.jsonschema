@@ -8,7 +8,7 @@ long_description = (
     io.open('CHANGES.rst', encoding='utf-8').read())
 
 setup(name='more.jsonschema',
-      version='0.1dev0',
+      version='0.1.dev0',
       description="JSON Schema support for Morepath",
       long_description=long_description,
       author="Henri Hulski",
@@ -28,7 +28,7 @@ setup(name='more.jsonschema',
           'Programming Language :: Python :: 3.5',
       ],
       install_requires=[
-          'morepath >= 0.18.dev0',
+          'morepath >= 0.18',
           'jsonschema'
       ],
       extras_require=dict(

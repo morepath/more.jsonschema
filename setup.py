@@ -8,7 +8,7 @@ long_description = (
     io.open('CHANGES.rst', encoding='utf-8').read())
 
 setup(name='more.jsonschema',
-      version='0.1',
+      version='0.2.dev0',
       description="JSON Schema support for Morepath",
       long_description=long_description,
       author="Henri Hulski",

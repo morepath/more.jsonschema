@@ -1,6 +1,6 @@
 from functools import partial
 
-from jsonschema import Draft4Validator
+from jsonschema import Draft7Validator
 
 from .errors import ValidationError
 
@@ -15,12 +15,12 @@ def load(schema, validator, request):
     return request.json
 
 
-def loader(schema, validator=Draft4Validator):
+def loader(schema, validator=Draft7Validator):
     """Create a load function based on schema dict and IValidator class.
 
     :param schema: The schema to validate with.
     :param validator: The IValidator class that will be used to validate
-        the instance. Default to ``Draft4Validator``.
+        the instance. Default to ``Draft7Validator``.
 
     You can plug this ``load`` function into a json view.
 

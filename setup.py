@@ -40,6 +40,6 @@ setup(name='more.jsonschema',
           ],
           pep8=[
               'flake8',
-              'pep8-naming',
+              'black',
           ],
       ))

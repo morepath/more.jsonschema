@@ -16,6 +16,8 @@ CHANGES
 
 - Make JSON Schema Draft 7 the default validator.
 
+- Add integration for the Black code formatter.
+
 
 0.1 (2017-03-17)
 ================

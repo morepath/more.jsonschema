@@ -65,17 +65,17 @@ We can use this loader to handle a POST request for instance:
 Customize the Validator
 -----------------------
 
-By default ``more.jsonschema`` uses the ``Draft4Validator``.
-But you can also use the ``Draft3Validator``, create your own Validator
-or extend an existent Validator. Just pass the Validator to the
-``loader``:
+By default ``more.jsonschema`` uses the ``Draft7Validator``.
+But you can also use ``Draft3Validator``, ``Draft4Validator`` or ``Draft6Validator``.
+You can even create your own Validator or extend an existent one.
+Just pass the Validator to the ``loader``:
 
 .. code-block:: python
 
-  from jsonschema import Draft3Validator
+  from jsonschema import Draft4Validator
   from more.jsonschema import loader
 
-    user_schema_load = loader(user_schema, validator=Draft3Validator)
+    user_schema_load = loader(user_schema, validator=Draft4Validator)
 
 More information about creating or extending Validator classes
 you can find in the `jsonschema documentation`_.

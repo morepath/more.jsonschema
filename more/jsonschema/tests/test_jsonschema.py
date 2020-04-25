@@ -12,18 +12,12 @@ def test_jsonschema():
             self.age = age
 
     user_schema = {
-        'type': 'object',
-        'properties': {
-            'name': {
-                'type': 'string',
-                'minLength': 3
-            },
-            'age': {
-                'type': 'integer',
-                'minimum': 10
-            }
+        "type": "object",
+        "properties": {
+            "name": {"type": "string", "minLength": 3},
+            "age": {"type": "integer", "minimum": 10},
         },
-        'required': ['name', 'age']
+        "required": ["name", "age"],
     }
 
     class App(JsonSchemaApp):
@@ -31,32 +25,29 @@ def test_jsonschema():
 
     user = User()
 
-    @App.path(model=User, path='/')
+    @App.path(model=User, path="/")
     def get_user():
         return user
 
-    @App.json(model=User, request_method='POST', load=loader(user_schema))
+    @App.json(model=User, request_method="POST", load=loader(user_schema))
     def user_post(self, request, json):
         for key, value in json.items():
             setattr(self, key, value)
 
     c = Client(App())
 
-    c.post_json('/', {'name': 'Somebody', 'age': 22})
-    assert user.name == 'Somebody'
+    c.post_json("/", {"name": "Somebody", "age": 22})
+    assert user.name == "Somebody"
     assert user.age == 22
 
-    r = c.post_json('/', {'name': 'Another'}, status=422)
+    r = c.post_json("/", {"name": "Another"}, status=422)
     assert r.json == ["'age' is a required property"]
 
-    r = c.post_json('/', {'name': 'Another', 'age': 8}, status=422)
-    assert r.json == ['8 is less than the minimum of 10']
+    r = c.post_json("/", {"name": "Another", "age": 8}, status=422)
+    assert r.json == ["8 is less than the minimum of 10"]
 
-    r = c.post_json('/', {'name': 'An', 'age': 8}, status=422)
-    assert r.json == [
-        '8 is less than the minimum of 10',
-        "'An' is too short"
-    ]
+    r = c.post_json("/", {"name": "An", "age": 8}, status=422)
+    assert r.json == ["8 is less than the minimum of 10", "'An' is too short"]
 
 
 def test_jsonschema_draft3_validator():
@@ -66,19 +57,11 @@ def test_jsonschema_draft3_validator():
             self.age = age
 
     user_schema = {
-        'type': 'object',
-        'properties': {
-            'name': {
-                'type': 'string',
-                'minLength': 3,
-                'required': True
-            },
-            'age': {
-                'type': 'integer',
-                'minimum': 10,
-                'required': True
-            }
-        }
+        "type": "object",
+        "properties": {
+            "name": {"type": "string", "minLength": 3, "required": True},
+            "age": {"type": "integer", "minimum": 10, "required": True},
+        },
     }
 
     class App(JsonSchemaApp):
@@ -86,34 +69,31 @@ def test_jsonschema_draft3_validator():
 
     user = User()
 
-    @App.path(model=User, path='/')
+    @App.path(model=User, path="/")
     def get_user():
         return user
 
     load = loader(user_schema, validator=Draft3Validator)
 
-    @App.json(model=User, request_method='POST', load=load)
+    @App.json(model=User, request_method="POST", load=load)
     def user_post(self, request, json):
         for key, value in json.items():
             setattr(self, key, value)
 
     c = Client(App())
 
-    c.post_json('/', {'name': 'Somebody', 'age': 22})
-    assert user.name == 'Somebody'
+    c.post_json("/", {"name": "Somebody", "age": 22})
+    assert user.name == "Somebody"
     assert user.age == 22
 
-    r = c.post_json('/', {'name': 'Another'}, status=422)
+    r = c.post_json("/", {"name": "Another"}, status=422)
     assert r.json == ["'age' is a required property"]
 
-    r = c.post_json('/', {'name': 'Another', 'age': 8}, status=422)
-    assert r.json == ['8 is less than the minimum of 10']
+    r = c.post_json("/", {"name": "Another", "age": 8}, status=422)
+    assert r.json == ["8 is less than the minimum of 10"]
 
-    r = c.post_json('/', {'name': 'An', 'age': 8}, status=422)
-    assert r.json == [
-        '8 is less than the minimum of 10',
-        "'An' is too short"
-    ]
+    r = c.post_json("/", {"name": "An", "age": 8}, status=422)
+    assert r.json == ["8 is less than the minimum of 10", "'An' is too short"]
 
 
 def test_jsonschema_draft4_validator():
@@ -123,18 +103,12 @@ def test_jsonschema_draft4_validator():
             self.age = age
 
     user_schema = {
-        'type': 'object',
-        'properties': {
-            'name': {
-                'type': 'string',
-                'minLength': 3
-            },
-            'age': {
-                'type': 'integer',
-                'minimum': 10
-            }
+        "type": "object",
+        "properties": {
+            "name": {"type": "string", "minLength": 3},
+            "age": {"type": "integer", "minimum": 10},
         },
-        'required': ['name', 'age']
+        "required": ["name", "age"],
     }
 
     class App(JsonSchemaApp):
@@ -142,34 +116,31 @@ def test_jsonschema_draft4_validator():
 
     user = User()
 
-    @App.path(model=User, path='/')
+    @App.path(model=User, path="/")
     def get_user():
         return user
 
     load = loader(user_schema, validator=Draft4Validator)
 
-    @App.json(model=User, request_method='POST', load=load)
+    @App.json(model=User, request_method="POST", load=load)
     def user_post(self, request, json):
         for key, value in json.items():
             setattr(self, key, value)
 
     c = Client(App())
 
-    c.post_json('/', {'name': 'Somebody', 'age': 22})
-    assert user.name == 'Somebody'
+    c.post_json("/", {"name": "Somebody", "age": 22})
+    assert user.name == "Somebody"
     assert user.age == 22
 
-    r = c.post_json('/', {'name': 'Another'}, status=422)
+    r = c.post_json("/", {"name": "Another"}, status=422)
     assert r.json == ["'age' is a required property"]
 
-    r = c.post_json('/', {'name': 'Another', 'age': 8}, status=422)
-    assert r.json == ['8 is less than the minimum of 10']
+    r = c.post_json("/", {"name": "Another", "age": 8}, status=422)
+    assert r.json == ["8 is less than the minimum of 10"]
 
-    r = c.post_json('/', {'name': 'An', 'age': 8}, status=422)
-    assert r.json == [
-        '8 is less than the minimum of 10',
-        "'An' is too short"
-    ]
+    r = c.post_json("/", {"name": "An", "age": 8}, status=422)
+    assert r.json == ["8 is less than the minimum of 10", "'An' is too short"]
 
 
 def test_jsonschema_draft6_validator():
@@ -179,18 +150,12 @@ def test_jsonschema_draft6_validator():
             self.age = age
 
     user_schema = {
-        'type': 'object',
-        'properties': {
-            'name': {
-                'type': 'string',
-                'minLength': 3
-            },
-            'age': {
-                'type': 'integer',
-                'minimum': 10
-            }
+        "type": "object",
+        "properties": {
+            "name": {"type": "string", "minLength": 3},
+            "age": {"type": "integer", "minimum": 10},
         },
-        'required': ['name', 'age']
+        "required": ["name", "age"],
     }
 
     class App(JsonSchemaApp):
@@ -198,31 +163,28 @@ def test_jsonschema_draft6_validator():
 
     user = User()
 
-    @App.path(model=User, path='/')
+    @App.path(model=User, path="/")
     def get_user():
         return user
 
     load = loader(user_schema, validator=Draft6Validator)
 
-    @App.json(model=User, request_method='POST', load=load)
+    @App.json(model=User, request_method="POST", load=load)
     def user_post(self, request, json):
         for key, value in json.items():
             setattr(self, key, value)
 
     c = Client(App())
 
-    c.post_json('/', {'name': 'Somebody', 'age': 22})
-    assert user.name == 'Somebody'
+    c.post_json("/", {"name": "Somebody", "age": 22})
+    assert user.name == "Somebody"
     assert user.age == 22
 
-    r = c.post_json('/', {'name': 'Another'}, status=422)
+    r = c.post_json("/", {"name": "Another"}, status=422)
     assert r.json == ["'age' is a required property"]
 
-    r = c.post_json('/', {'name': 'Another', 'age': 8}, status=422)
-    assert r.json == ['8 is less than the minimum of 10']
+    r = c.post_json("/", {"name": "Another", "age": 8}, status=422)
+    assert r.json == ["8 is less than the minimum of 10"]
 
-    r = c.post_json('/', {'name': 'An', 'age': 8}, status=422)
-    assert r.json == [
-        '8 is less than the minimum of 10',
-        "'An' is too short"
-    ]
+    r = c.post_json("/", {"name": "An", "age": 8}, status=422)
+    assert r.json == ["8 is less than the minimum of 10", "'An' is too short"]

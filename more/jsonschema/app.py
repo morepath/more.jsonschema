@@ -12,6 +12,7 @@ def validation_error_default(self, request):
     @request.after
     def adjust_status(response):
         response.status = 422
+
     errors = []
     for error in self.errors:
         errors.append(error.message)

@@ -8,7 +8,7 @@ long_description = (
 
 setup(
     name="more.jsonschema",
-    version="0.2",
+    version="0.3.dev0",
     description="JSON Schema support for Morepath",
     long_description=long_description,
     author="Henri Hulski",

@@ -4,7 +4,7 @@ CHANGES
 0.3 (unreleased)
 ================
 
-- Nothing changed yet.
+- Fix Flake8.
 
 
 0.2 (2020-04-26)

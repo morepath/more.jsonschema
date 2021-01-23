@@ -26,12 +26,12 @@ setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: Implementation :: PyPy",
     ],
     install_requires=["morepath >= 0.19", "jsonschema >= 3.2.0"],
     extras_require=dict(
         test=["pytest >= 2.9.1", "pytest-remove-stale-bytecode", "webtest"],
         coverage=["pytest-cov"],
-        pep8=["flake8", "black"],
     ),
 )

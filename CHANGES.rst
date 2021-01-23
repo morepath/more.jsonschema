@@ -6,6 +6,10 @@ CHANGES
 
 - Fix Flake8.
 
+- Add support for Python 3.9.
+
+- Use GitHub Actions for CI.
+
 
 0.2 (2020-04-26)
 ================

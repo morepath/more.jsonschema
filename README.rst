@@ -1,3 +1,17 @@
+.. image:: https://github.com/morepath/more.jsonschema/workflows/CI/badge.svg?branch=master
+   :target: https://github.com/morepath/more.jsonschema/actions?workflow=CI
+   :alt: CI Status
+
+.. image:: https://coveralls.io/repos/github/morepath/more.jsonschema/badge.svg?branch=master
+    :target: https://coveralls.io/github/morepath/more.jsonschema?branch=master
+
+.. image:: https://img.shields.io/pypi/v/more.jsonschema.svg
+  :target: https://pypi.org/project/more.jsonschema/
+
+.. image:: https://img.shields.io/pypi/pyversions/more.jsonschema.svg
+  :target: https://pypi.org/project/more.jsonschema/
+
+
 more.jsonschema: JSON Schema support for Morepath
 =================================================
 
